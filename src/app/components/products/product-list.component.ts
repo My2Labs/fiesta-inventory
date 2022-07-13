@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
 import { InventoryService } from "src/app/inventory.service";
+import { fiesta } from "./../../../fiestas";
 
 
 
@@ -9,10 +11,15 @@ import { InventoryService } from "src/app/inventory.service";
     styleUrls: ['./product-list.css'],
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit, OnDestroy {
     pageTitle = 'Fiesta Inventory';
-    showImage: boolean = false;
+    showImage = true;
 	fiesta: any;
+	// products: fiesta[] = [];
+	products: any[] = [];
+	filteredProducts: any[] = [];
+	errorMessage = '';
+	sub!: Subscription;
    
 	private _listFilter: string = '';
 	get listFilter(): string {
@@ -23,8 +30,7 @@ export class ProductListComponent {
 		this.filteredProducts = this.performFilter(value);
 	}
 
-	filteredProducts: any[] = [];
-	products: any[] = [];
+	
 
 	constructor(private inventoryService: InventoryService) {}
 	
@@ -42,10 +48,33 @@ export class ProductListComponent {
         this.showImage = !this.showImage;
     }
 
-	ngOnInit(): void {
-		this.products = this.inventoryService.getProducts();
-		this.filteredProducts = this.products;
-		//this.listFilter = 'search';
+	// ngOnInit(): void {
+	// 	this.products = this.inventoryService.getFiesta();
+	// 	this.filteredProducts = this.products;
+	// 	//this.listFilter = 'search';
+	// }
+
+	// ngOnInit(): void {
+	// 	this.inventoryService.getProducts().subscribe({
+	// 		next: products => {
+	// 			console.log(products);
+	// 			this.products = products;
+	// 			this.filteredProducts = this.products;
+	// 		},
+	// 		error: err => this.errorMessage = err
+	// 	});
+	// }
+
+	ngOnInit() {
+		this.inventoryService.getProducts().subscribe((theresponse: any) => {
+			console.log(theresponse.fiestas);
+			this.filteredProducts = theresponse.fiestas;
+			return theresponse;
+		  });
+	}
+
+	ngOnDestroy(): void {
+		this.sub.unsubscribe();
 	}
 
 	
