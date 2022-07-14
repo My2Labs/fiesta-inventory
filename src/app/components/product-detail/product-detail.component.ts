@@ -11,10 +11,12 @@ import { InventoryService } from './../../inventory.service';
 export class ProductDetailComponent implements OnInit {
   pageTitle = 'Item Detail';
   fiesta: any;
-	// products: fiesta[] = [];
-	products: any[] = [];
+	//products: fiesta[] = [];
+	//products: any[] = [];
   errorMessage = '';
-  product: any[] = [];
+  products: any | undefined;
+  id: any;
+  
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -24,16 +26,32 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
-      this.getProduct(id);
-    }
+      this.route.snapshot.paramMap.get('id');
+      console.log(this.route.snapshot.paramMap.get('id'))
+      this.getProducts(id);
+      
+   }
+   
   }
 
-  getProduct(id: number): void {
-    this.inventoryService.getProducts().subscribe({
-      next: product => this.product = product,
-      error: err => this.errorMessage = err
-    });
+  // getProducts(id: any): void {
+  //   this.inventoryService.getProducts().subscribe({
+  //     next: products => this.products = products,
+  //     error: err => this.errorMessage = err,
+  //   });
+//   console.log(this.products)
+// }
+
+  getProducts(id: any): void {
+		this.inventoryService.getProducts().subscribe((theresponse: any) => {
+			console.log(theresponse.fiestas);
+			this.products = theresponse.fiestas;
+			return theresponse;
+		  });
+      console.log(this.products)
   }
+
+  
 
   onBack(): void {
     this.router.navigate(['/list']);

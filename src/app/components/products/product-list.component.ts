@@ -11,7 +11,7 @@ import { fiesta } from "./../../../fiestas";
     styleUrls: ['./product-list.css'],
 })
 
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
     pageTitle = 'Fiesta Inventory';
     showImage = true;
 	fiesta: any;
@@ -73,9 +73,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 		  });
 	}
 
-	ngOnDestroy(): void {
-		this.sub.unsubscribe();
-	}
+	// ngOnDestroy(): void {
+	// 	this.sub.unsubscribe();
+	// }
 
 	
 	getTotal() {
