@@ -7,3 +7,17 @@ img {
     font-size: 24;
     font-weight: 900;
 }
+
+a:link {
+    color: black;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: black;
+  }
+  
+  a:hover {
+    color: hotpink;
+  }
+  

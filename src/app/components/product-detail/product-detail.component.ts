@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fiesta } from './../../../fiestas';
+import { FIESTA } from './../../../fiesta';
 import { InventoryService } from './../../inventory.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
 	//products: fiesta[] = [];
 	//products: any[] = [];
   errorMessage = '';
-  products: any | undefined;
+  product: fiesta | undefined;
   id: any;
   
 
@@ -23,33 +24,38 @@ export class ProductDetailComponent implements OnInit {
               private inventoryService: InventoryService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
-      this.route.snapshot.paramMap.get('id');
-      console.log(this.route.snapshot.paramMap.get('id'))
+      this.pageTitle += `: ${id}`;
       this.getProducts(id);
-      
+      console.log(this.getProducts(id))
+      console.log(this.pageTitle += `: ${id}`)
+      console.log(`${id}`)
+      console.log(id)
    }
    
   }
 
-  // getProducts(id: any): void {
-  //   this.inventoryService.getProducts().subscribe({
-  //     next: products => this.products = products,
-  //     error: err => this.errorMessage = err,
-  //   });
-//   console.log(this.products)
-// }
 
-  getProducts(id: any): void {
-		this.inventoryService.getProducts().subscribe((theresponse: any) => {
-			console.log(theresponse.fiestas);
-			this.products = theresponse.fiestas;
-			return theresponse;
+  getProducts(id: number): void {
+		this.inventoryService.getProducts().subscribe((products: any) => {
+			console.log(products.fiestas);
+			this.product = products.fiestas[(id)];
+      //this.product = id;
+      console.log(id)
+
 		  });
-      console.log(this.products)
+      console.log(id)
   }
+
+//   getProducts(id: number): void {
+//     this.inventoryService.getProducts().subscribe({
+//       next: products => this.fiesta = products,
+//       error: err => this.errorMessage = err,
+//     });
+//   console.log(this.product)
+// }
 
   
 
@@ -57,3 +63,21 @@ export class ProductDetailComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 }
+
+
+  // ngOnInit() {
+	// 	this.inventoryService.getProducts().subscribe((theresponse: any) => {
+	// 		console.log(theresponse.fiestas);
+	// 		this.products = theresponse.fiestas;
+	// 		return theresponse;
+	// 	  });
+	// }
+
+  //USE THIS ONE
+//   getProducts(id: number): void {
+//     this.inventoryService.getProducts().subscribe({
+//       next: products => this.products = products,
+//       error: err => this.errorMessage = err,
+//     });
+//   console.log(this.products)
+// }

@@ -7,6 +7,9 @@ import { fiesta } from './../fiestas';
   providedIn: 'root'
 })
 export class InventoryService {
+  get(id: any) {
+    throw new Error('Method not implemented.');
+  }
   private fiestaUrl = 'https://fiesta-inventory.herokuapp.com/api/fiesta/';
 
 //   getFiesta(): fiesta[] {
