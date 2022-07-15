@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
 	sub!: Subscription;
    
 	private _listFilter: string = '';
+	
 	get listFilter(): string {
 		return this._listFilter;
 	}
@@ -48,22 +49,6 @@ export class ProductListComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-	// ngOnInit(): void {
-	// 	this.products = this.inventoryService.getFiesta();
-	// 	this.filteredProducts = this.products;
-	// 	//this.listFilter = 'search';
-	// }
-
-	// ngOnInit(): void {
-	// 	this.inventoryService.getProducts().subscribe({
-	// 		next: products => {
-	// 			console.log(products);
-	// 			this.products = products;
-	// 			this.filteredProducts = this.products;
-	// 		},
-	// 		error: err => this.errorMessage = err
-	// 	});
-	// }
 
 	ngOnInit() {
 		this.inventoryService.getProducts().subscribe((theresponse: any) => {
@@ -72,6 +57,7 @@ export class ProductListComponent implements OnInit {
 			return theresponse;
 		  });
 	}
+
 
 	// ngOnDestroy(): void {
 	// 	this.sub.unsubscribe();
