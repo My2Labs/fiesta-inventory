@@ -9,6 +9,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { ProductListComponent } from './components/products/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
     MainPageComponent,
     ProductListComponent,
     ProductDetailComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
