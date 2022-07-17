@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { InventoryService } from "src/app/inventory.service";
-import { fiesta } from "./../../../fiestas";
+import { FIESTA } from "./../../../fiesta";
 
 
 
@@ -57,6 +57,9 @@ export class ProductListComponent implements OnInit {
 			return theresponse;
 		  });
 	}
+
+
+	
 
 
 	// ngOnDestroy(): void {

@@ -1,9 +1,4 @@
 
-
-<!-- <pm-product-detail></pm-product-detail> -->
-
-
-
 <div class="card">
     <div class="card-header">Inventory List</div>
     <div class="card-body">
@@ -43,7 +38,7 @@
         <tr *ngFor="let product of filteredProducts">
             <td><img *ngIf='showImage' src={{product.description}} /></td>
             <td>
-                <a [routerLink]="['/item', product.itemid]">{{product.name}}</a></td>
+                <a [routerLink]="['/item', product.id]">{{product.name}}</a></td>
             <td>{{product.color}}</td>
             <td>{{product.value | currency:'USD' : 'symbol':'1.2-2'}}</td>
             <td>{{product.quantity}}</td>
