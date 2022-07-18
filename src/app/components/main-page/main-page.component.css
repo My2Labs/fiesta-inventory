@@ -10,11 +10,12 @@ div {
 p {
     display: block;
     justify-content: center;
-    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    -family: Verdana, Geneva, Tahoma, sans-serif; */
-    font-size: 17px;
+    font-family: 'Euphoria Script', cursive;
+    font-size: 40px;
     color: rgb(77, 77, 77);
     text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
 .main-image {
