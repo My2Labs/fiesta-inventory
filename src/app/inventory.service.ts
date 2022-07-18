@@ -13,7 +13,7 @@ export class InventoryService {
   get(itemid: any) {
     throw new Error('Method not implemented.');
   }
-  private fiestaUrl = 'https://fiesta-inventory.herokuapp.com/api/fiesta/';
+  private fiestaUrl = 'https://hlc-fiesta.herokuapp.com/api/fiesta';
 
 
 getProducts(): Observable<fiesta[]> {

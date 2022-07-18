@@ -32,14 +32,14 @@ export class ProductDetailComponent implements OnInit {
 
   getProducts(id: number): void {
 		this.inventoryService.getProducts().subscribe((product: any) => {
-			console.log(id);
-			this.product = product.fiestas[(id)];
+			console.log(id-1);
+			this.product = product.fiestas[(id-1)];
       //this.product = id;
       console.log(product.fiestas[(id)])
       error: (err: string) => this.errorMessage = err
 		  });
       console.log(id)
-    }
+  }
 
 
   getTotal() {
