@@ -35,7 +35,7 @@ export class ProductDetailComponent implements OnInit {
 			console.log(id-1);
 			this.product = product.fiestas[(id-1)];
       //this.product = id;
-      console.log(product.fiestas[(id)])
+      console.log(product.fiestas[(id-1)])
       error: (err: string) => this.errorMessage = err
 		  });
       console.log(id)
