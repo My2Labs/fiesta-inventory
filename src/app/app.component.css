@@ -5,3 +5,8 @@
   li {
     margin-left: 10px;
   }
+
+  .navbar-brand {
+    margin-left: 10px;
+    color: rgb(255, 77, 0);
+  }
